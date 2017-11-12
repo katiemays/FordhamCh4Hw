@@ -5,14 +5,62 @@
 #include <iostream>
 using namespace std;
 
-bool tenchar(string i)
+bool tenchar(string pwd)
 {
-	if (i.length() < 10)
-		return false;
+	if (pwd.length() >= 10)
+		return true;
 	else 
-		continue;
+		return false;
 }
+bool uppercase(string pwd)
+{
+	int i, len;
+	char letter;
+	// declare
+	len = pwd.length();
+	for (i=0; i < len; i++)
+	{ 
+		letter = pwd.at(i);
 
+		if (letter >= 'A' && letter <= 'Z') 
+			return true;
+	}
+
+	return false;
+}
+bool digit(string pwd)
+{
+	int i, len;
+	char letter;
+	//declare
+	len = pwd.length();
+	for (i=0; i < len; i++)
+	{
+		letter = pwd.at(i);
+
+		if (letter >= '0' && letter <= '9')
+			return true;
+	}
+	
+	return false;
+}
+bool character(string pwd)
+{
+	int i, len;
+	char letter;
+	// declare
+	len = pwd.length();
+	for (i=0; i < len; i++)
+	{
+		letter = pwd.at(i);
+
+		if ((letter == '!') || (letter == '@') || (letter == '#') || (letter == '$') || (letter == '%') || (letter == '^') || (letter == '&') || (letter == '*') || (letter == '(') || (letter == ')'))
+			return true;
+	}
+
+	return false;
+}
+ 
 int main()
 {
 	// variables
@@ -22,8 +70,10 @@ int main()
 	cout << "Enter a password: ";
 	cin  >> pwd;
 
-	if		
-
+	if ((tenchar(pwd)==false) || (uppercase(pwd)==false) || (digit(pwd)==false) || (character(pwd)==false))
+		cout << "Invalid Password!" << endl;		
+	else
+		cout << "Valid Password!" << endl;
 
 
 	return 0;
